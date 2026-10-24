@@ -1,0 +1,63 @@
+{
+  "name": "dsh-game-control",
+  "version": "0.1.0",
+  "description": "游戏操控工具集：给 DeepSeek Harness 的 agent 加上扫描码级键盘输入、鼠标相对位移（视角控制）、时序连招与屏幕截图能力 / Game input & capture tools (scan-code keyboard, relative mouse for camera control, timed sequences, screenshots) as an MCP server for DeepSeek Harness",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "game",
+    "gaming",
+    "mcp",
+    "sendinput",
+    "automation",
+    "computer-use"
+  ],
+  "author": {
+    "name": "hezhaochao"
+  },
+  "homepage": "https://github.com/hezhaochao/dsh-game-control#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hezhaochao/dsh-game-control.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hezhaochao/dsh-game-control/issues"
+  },
+  "type": "module",
+  "main": "./mcp/dsh-plugin.mjs",
+  "bin": {
+    "gamectl-mcp": "./mcp/server.mjs"
+  },
+  "exports": {
+    ".": "./mcp/dsh-plugin.mjs",
+    "./server": "./mcp/server.mjs",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "mcp",
+    "scripts",
+    "test",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/mcp.test.mjs",
+    "test:backend": "powershell -NoProfile -ExecutionPolicy Bypass -File test/e2e-inputs.ps1"
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-rc.1 <0.3.0-0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": ">=0.1.0-rc.2 || >=0.2.0-rc.2"
+  }
+}

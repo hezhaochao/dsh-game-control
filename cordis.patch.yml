@@ -1,0 +1,9 @@
+# dsh-game-control — DSH bundle patch 层
+#
+# 通过 DSH 内置的 @deepseek-ai/dsh-mcp-client 桥接挂载游戏操控 MCP 服务器。
+# DSH 启动后，模型看到的工具名为 mcp__gamectl__<工具>（screenshot、key、
+# mouse_move、mouse_click、mouse_wheel、sequence、windows、focus）。
+
+- insert:
+    - id: mcp-game-control
+      name: 'dsh-game-control'
