@@ -1,6 +1,6 @@
 {
   "name": "dsh-game-control",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "游戏操控工具集：给 DeepSeek Harness 的 agent 加上扫描码级键盘输入、鼠标相对位移（视角控制）、时序连招与屏幕截图能力 / Game input & capture tools (scan-code keyboard, relative mouse for camera control, timed sequences, screenshots) as an MCP server for DeepSeek Harness",
   "license": "MIT",
   "keywords": [
@@ -26,17 +26,18 @@
     "url": "https://github.com/hezhaochao/dsh-game-control/issues"
   },
   "type": "module",
-  "main": "./mcp/dsh-plugin.mjs",
+  "main": "./lib/index.js",
   "bin": {
     "gamectl-mcp": "./mcp/server.mjs"
   },
   "exports": {
-    ".": "./mcp/dsh-plugin.mjs",
+    ".": "./lib/index.js",
     "./server": "./mcp/server.mjs",
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
   "files": [
+    "lib",
     "mcp",
     "scripts",
     "test",
@@ -59,5 +60,6 @@
   },
   "peerDependencies": {
     "@deepseek-ai/dsh-mcp-client": ">=0.1.0-rc.2 || >=0.2.0-rc.2"
-  }
+  },
+  "_comment": "0.1.1：修复 apply 为 async 时宿主条目静默不挂载的问题（cordis 以 new apply 调用，async 不可构造）"
 }
